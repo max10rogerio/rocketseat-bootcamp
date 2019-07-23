@@ -14,5 +14,5 @@ export const store = async (req, res, next) => {
   return schema
     .validate(req.body)
     .then(() => next())
-    .catch(err => res.status(400).json({ error: err.errors[0] }))
+    .catch(err => res.status(400).json({ error: err.message }))
 }
