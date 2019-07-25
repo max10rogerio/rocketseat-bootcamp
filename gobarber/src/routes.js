@@ -45,6 +45,7 @@ routes.post(
   ValidateSchema(appointmentSchemas.store),
   AppointmentController.store
 )
+routes.delete('/appointments/:id', AppointmentController.delete)
 
 routes.get('/schedule', ScheduleController.index)
 
