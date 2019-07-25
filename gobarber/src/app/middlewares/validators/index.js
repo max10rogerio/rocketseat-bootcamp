@@ -12,3 +12,4 @@ export default validateSchema
 
 export { default as userSchemas } from './user'
 export { default as sessionSchemas } from './session'
+export { default as appointmentSchemas } from './appointment'
