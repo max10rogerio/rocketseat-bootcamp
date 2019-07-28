@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:11.4-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - 5432:5432
+  mongodb:
+    container_name: mongodb
+    restart: always
+    image: mongo
+    ports:
+       - 27017:27017
+  redis:
+    container_name: redis
+    restart: always
+    image: redis:alpine
+    ports:
+     - 6379:6379
+
+
