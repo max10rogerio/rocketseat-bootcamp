@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv/config')
 
 export default {
   host: process.env.MAIL_HOST,
