@@ -1,76 +1,64 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+import { ActivityIndicator } from 'react-native'
+
+import { Avatar, Container, List } from '../../components'
 import api from '../../services/api'
 
-import {
-  Container,
-  Header,
-  Avatar,
-  Name,
-  Bio,
-  Stars,
-  Starred,
-  OwnerAvatar,
-  Info,
-  Title,
-  Author,
-} from './styles'
+import { Header, Name, Bio, Starred, Info, Title, Author } from './styles'
 
-class User extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam('user').name,
-  })
+const User = ({ navigation }) => {
+  const [stars, setStars] = useState([])
+  const [loading, setLoading] = useState(false)
+  const user = navigation.getParam('user')
 
-  static propTypes = {
-    navigation: PropTypes.shape({
-      getParam: PropTypes.func,
-    }).isRequired,
-  }
+  useEffect(() => {
+    async function fetch() {
+      setLoading(true)
+      const response = await api.get(`/users/${user.login}/starred`)
 
-  state = {
-    stars: [],
-  }
+      setStars(response.data)
+      setLoading(false)
+    }
 
-  async componentDidMount() {
-    const { navigation } = this.props
-    const user = navigation.getParam('user')
+    fetch()
+  }, [])
 
-    const response = await api.get(`/users/${user.login}/starred`)
+  return (
+    <Container>
+      <Header>
+        <Avatar size={100} source={{ uri: user.avatar }} />
+        <Name>{user.name}</Name>
+        <Bio>{user.bio}</Bio>
+      </Header>
 
-    this.setState({ stars: response.data })
-  }
+      <List
+        data={stars}
+        keyExtractor={star => String(star.id)}
+        renderItem={({ item }) => (
+          <Starred>
+            <Avatar size={42} source={{ uri: item.owner.avatar_url }} />
+            <Info>
+              <Title>{item.name}</Title>
+              <Author>{item.owner.login}</Author>
+            </Info>
+          </Starred>
+        )}
+      />
+      {loading && <ActivityIndicator color='#7159c1' size={100} />}
+    </Container>
+  )
+}
 
-  render() {
-    const { navigation } = this.props
-    const { stars } = this.state
+User.navigationOptions = {
+  title: 'Favoritos',
+}
 
-    const user = navigation.getParam('user')
-
-    return (
-      <Container>
-        <Header>
-          <Avatar source={{ uri: user.avatar }} />
-          <Name>{user.name}</Name>
-          <Bio>{user.bio}</Bio>
-        </Header>
-
-        <Stars
-          data={stars}
-          keyExtractor={star => String(star.id)}
-          renderItem={({ item }) => (
-            <Starred>
-              <OwnerAvatar source={{ uri: item.owner.avatar_url }} />
-              <Info>
-                <Title>{item.name}</Title>
-                <Author>{item.owner.login}</Author>
-              </Info>
-            </Starred>
-          )}
-        />
-      </Container>
-    )
-  }
+User.propTypes = {
+  navigation: PropTypes.shape({
+    getParam: PropTypes.func,
+  }).isRequired,
 }
 
 export default User
