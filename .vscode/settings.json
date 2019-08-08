@@ -1,0 +1,7 @@
+{
+  "javascript.validate.enable": false,
+  "editor.tabSize": 2,
+  "eslint.enable": true,
+  "eslint.run": "onType",
+  "eslint.autoFixOnSave": true
+}
