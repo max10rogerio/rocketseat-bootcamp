@@ -6,7 +6,7 @@ module.exports = {
           ['assets', './src/assets'],
           ['components', './src/components'],
           ['configs', './src/configs'],
-          ['screens', './src/screens'],
+          ['pages', './src/pages'],
           ['utils', './src/utils'],
           ['routes', './src/routes'],
           ['services', './src/services'],

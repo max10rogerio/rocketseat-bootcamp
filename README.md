@@ -14,14 +14,14 @@ In your `vscode`, install the extension [ESLINT](https://marketplace.visualstudi
 Don't use `../` to access files, this template includes `import from root`
 
 Exemple:
-If you need import a component in your screen, do:
+If you need import a component in your page, do:
 > components/Test.js
 ```js
 import React from 'react'
 
 export default () => <p>Test</p>
 ```
-> screens/Home
+> pages/Home
 ```js
 import React from 'react'
 
