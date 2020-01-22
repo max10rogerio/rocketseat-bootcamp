@@ -1,14 +1,25 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Router, Switch } from 'react-router-dom'
 
-import Home from 'pages/Home'
+import history from 'services/history'
+import SignIn from 'pages/SignIn'
+import SignUp from 'pages/SignUp'
+import Dashboard from 'pages/Dashboard'
+import Profile from 'pages/Profile'
 
-const Routes = () => (
-  <Router>
-    <Switch>
-      <Route path='/' component={Home} />
-    </Switch>
-  </Router>
-)
+import Route from './Route'
+
+function Routes() {
+  return (
+    <Router history={history}>
+      <Switch>
+        <Route path='/' exact component={SignIn} />
+        <Route path='/register' component={SignUp} />
+        <Route path='/dashboard' component={Dashboard} isPrivate />
+        <Route path='/profile' component={Profile} isPrivate />
+      </Switch>
+    </Router>
+  )
+}
 
 export default Routes

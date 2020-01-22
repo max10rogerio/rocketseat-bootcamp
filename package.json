@@ -1,6 +1,6 @@
 {
-  "name": "react-web-template-project",
-  "description": "This is a template with create-react-app, eslint, prettier for to quickly start your project",
+  "name": "gobarber",
+  "description": "Rocketseat - Gobarber",
   "version": "0.0.1",
   "license": "ISC",
   "private": false,
@@ -12,11 +12,31 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "@rocketseat/unform": "^1.6.1",
+    "axios": "^0.19.0",
+    "date-fns": "^2.0.0-beta.5",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "history": "^4.10.1",
+    "immer": "^4.0.0",
+    "polished": "^3.4.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-icons": "^3.7.0",
+    "react-perfect-scrollbar": "^1.5.3",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "typeface-roboto": "^0.0.75"
+    "react-scripts": "^3.1.1",
+    "react-toastify": "^5.4.0",
+    "reactotron-react-js": "^3.3.2",
+    "reactotron-redux": "^3.1.2",
+    "reactotron-redux-saga": "^4.2.2",
+    "redux": "^4.0.4",
+    "redux-persist": "^6.0.0",
+    "redux-saga": "^1.1.1",
+    "styled-components": "^4.4.0",
+    "typeface-roboto": "^0.0.75",
+    "yup": "^0.27.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,7 +54,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.3.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-import-resolver-alias": "^1.1.2",

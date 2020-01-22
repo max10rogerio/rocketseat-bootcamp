@@ -9,6 +9,7 @@ module.exports = {
           ['pages', './src/pages'],
           ['utils', './src/utils'],
           ['routes', './src/routes'],
+          ['store', './src/store'],
           ['services', './src/services'],
         ],
         extensions: ['.ts', '.js', '.jsx', '.json', '.css']
@@ -41,7 +42,8 @@ module.exports = {
   },
   plugins: [
     'react',
-    'prettier'
+    'prettier',
+    'react-hooks',
   ],
   rules: {
     'prettier/prettier': 'error',
@@ -57,9 +59,22 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-console': 2,
     'no-inline-comments': 2,
+    'no-param-reassign': 0,
     'multiline-comment-style': [
       2,
       'starred-block'
-    ]
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    'no-underscore-dangle': 'off',
+    'camelcase': 'off'
   },
+  overrides: [
+    {
+      files: ["ReactotronConfig.js"],
+      rules: {
+        'no-console': 'off',
+      }
+    }
+  ]
 };
